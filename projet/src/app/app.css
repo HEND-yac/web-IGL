@@ -1,0 +1,2 @@
+/* App-level styles are minimal — component styles live in each component folder */
+:host { display: block; padding: 0.5rem; }

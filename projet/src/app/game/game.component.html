@@ -1,0 +1,70 @@
+<div class="content game">
+  <div class="game-area">
+    <h1>Quiz interactif —</h1>
+    <p class="score">Score actuel : <strong>{{ score }}</strong></p>
+
+    <!-- Afficher une question à la fois -->
+    <div *ngIf="currentIndex >= 0 && !gameFinished; else finishedBlock" class="question-card">
+      <div *ngIf="questions && questions.length">
+        <div *ngIf="!allAnswered(); else allDone">
+          <h3>Question {{ currentIndex + 1 }} / {{ questions.length }}</h3>
+          <p class="q-text">{{ questions[currentIndex].question }}</p>
+
+          <div class="options">
+            <button
+              *ngFor="let option of questions[currentIndex].options"
+              class="option-btn"
+              [ngClass]="{
+                'correct-answer': isCorrect(option, questions[currentIndex]),
+                'incorrect-answer': questions[currentIndex].answered && isSelected(option, questions[currentIndex]) && !isCorrect(option, questions[currentIndex])
+              }"
+              [ngStyle]="{ 'opacity': questions[currentIndex].answered ? '0.6' : '1', 'transform': isSelected(option, questions[currentIndex]) ? 'scale(1.02)' : 'scale(1)' }"
+              (click)="onSelectOption(option, questions[currentIndex])"
+            >
+              {{ option }}
+            </button>
+          </div>
+
+          <div *ngIf="feedback" class="feedback" [ngClass]="{'positive': feedback.correct, 'negative': !feedback.correct}">
+            {{ feedback.message }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #allDone>
+      <p>Toutes les questions ont été répondues.</p>
+    </ng-template>
+
+    <div *ngIf="allAnswered() && !gameFinished" class="end-actions">
+      <button class="finish-btn" (click)="finishGame()">Terminer le jeu</button>
+    </div>
+
+    <ng-template #finishedBlock>
+      <div class="results">
+        <h2>Résultat final</h2>
+        <p>Score final : <strong>{{ score }}</strong></p>
+        <button (click)="resetGame()">Recommencer</button>
+      </div>
+    </ng-template>
+  </div>
+
+  <aside class="side-panel">
+    <h3>Historique des réponses</h3>
+    <div *ngIf="history.length; else noHistory">
+      <ul class="history-list">
+        <li *ngFor="let h of history">
+          <span class="hist-q">{{ h.question }}</span>
+          - <span [ngClass]="{ 'positive': h.correct, 'negative': !h.correct }">{{ h.selected }} ({{ h.correct ? 'Correct' : 'Incorrect' }})</span>
+        </li>
+      </ul>
+    </div>
+    <ng-template #noHistory>
+      <p>Aucune réponse pour l'instant.</p>
+    </ng-template>
+
+    <div class="controls">
+      <button (click)="resetGame()">Réinitialiser</button>
+    </div>
+  </aside>
+</div>
