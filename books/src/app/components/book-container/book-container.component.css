@@ -1,0 +1,91 @@
+/* Styles colorés et vivaces pour étudiant */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  min-height: 100vh;
+}
+
+h1 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  background: linear-gradient(45deg, #3498db, #2980b9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+h2 {
+  color: #34495e;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+}
+
+.stats {
+  background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  box-shadow: 0 8px 32px rgba(116, 185, 255, 0.3);
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+.stats:hover {
+  transform: translateY(-3px);
+}
+
+.search {
+  margin-bottom: 25px;
+}
+
+.search input {
+  width: 100%;
+  padding: 15px 20px;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: white;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.search input:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 4px 20px rgba(52, 152, 219, 0.3);
+  transform: translateY(-2px);
+}
+
+.form-section, .list-section {
+  background: white;
+  border: none;
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.form-section:hover, .list-section:hover {
+  transform: translateY(-5px);
+}
+
+.form-section {
+  background: linear-gradient(135deg, #e8f4f8 0%, #d6eaf8 100%);
+}
+
+.list-section {
+  background: linear-gradient(135deg, #f0f8f0 0%, #e8f5e8 100%);
+}

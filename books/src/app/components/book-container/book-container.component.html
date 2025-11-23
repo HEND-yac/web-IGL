@@ -1,0 +1,41 @@
+<!-- Template simple pour étudiant -->
+<div class="container">
+  
+  <!-- Titre principal -->
+  <h1>Gestion de Bibliothèque</h1>
+  
+  <!-- Compteurs simples -->
+  <div class="stats">
+    <p>Total: {{ totalBooks }} livres | Disponibles: {{ availableBooks }} livres</p>
+  </div>
+  
+  <!-- Recherche simple -->
+  <div class="search">
+    <input 
+      type="text" 
+      placeholder="Rechercher un livre..."
+      #searchInput
+      (input)="onSearch(searchInput.value)">
+  </div>
+  
+  <!-- Formulaire d'ajout/modification -->
+  <div class="form-section">
+    <h2>{{ isEditing ? 'Modifier' : 'Ajouter' }} un livre</h2>
+    <app-book-form 
+      [categories]="categories"
+      [bookToEdit]="bookToEdit"
+      (bookSaved)="onBookSaved($event)">
+    </app-book-form>
+  </div>
+  
+  <!-- Liste des livres -->
+  <div class="list-section">
+    <h2>Liste des livres ({{ filteredBooks.length }})</h2>
+    <app-book-list 
+      [books]="filteredBooks"
+      (editBook)="onEditBook($event)"
+      (deleteBook)="onDeleteBook($event)">
+    </app-book-list>
+  </div>
+  
+</div>

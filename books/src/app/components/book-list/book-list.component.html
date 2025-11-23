@@ -1,0 +1,42 @@
+<!-- Liste simple pour étudiant -->
+<div class="book-list">
+  <div *ngIf="books.length === 0" class="no-books">
+    <p>Aucun livre trouvé</p>
+  </div>
+
+  <table *ngIf="books.length > 0" class="simple-table">
+    <thead>
+      <tr>
+        <th>Titre</th>
+        <th>Auteur</th>
+        <th>Catégorie</th>
+        <th>Disponible</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books" [class.unavailable]="!book.isAvailable">
+        <td><strong>{{ book.title }}</strong></td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.category }}</td>
+        <td>
+          <span [class]="book.isAvailable ? 'available' : 'unavailable'">
+            {{ book.isAvailable ? 'Oui' : 'Non' }}
+          </span>
+        </td>
+        <td class="actions">
+          <button (click)="onEdit(book)" class="btn edit">
+            Modifier
+          </button>
+          <button (click)="onDelete(book.id)" class="btn delete">
+            Supprimer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="books.length > 0" class="total">
+    Total : {{ books.length }} livre(s)
+  </div>
+</div>

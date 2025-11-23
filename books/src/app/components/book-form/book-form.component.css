@@ -1,0 +1,130 @@
+/* Styles colorés et modernes pour formulaire étudiant */
+.simple-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #2c3e50;
+  font-size: 14px;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #e0e6ed;
+  border-radius: 10px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #5dade2;
+  box-shadow: 0 0 0 3px rgba(93, 173, 226, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Styles pour erreurs avec animation */
+.error {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 5px;
+  padding: 5px 10px;
+  background: rgba(231, 76, 60, 0.1);
+  border-radius: 5px;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+input.ng-invalid.ng-dirty {
+  border-left: 4px solid #e74c3c;
+  animation: pulse-red 1s ease-in-out;
+}
+
+@keyframes pulse-red {
+  0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(231, 76, 60, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+}
+
+/* Checkbox avec style moderne */
+.checkbox-field {
+  display: flex;
+  align-items: center;
+  background: rgba(93, 173, 226, 0.08);
+  padding: 15px;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.checkbox-field:hover {
+  background: rgba(93, 173, 226, 0.12);
+}
+
+.checkbox-field label {
+  margin-bottom: 0;
+  margin-left: 10px;
+  color: #2c3e50;
+}
+
+/* Boutons modernes avec gradient */
+.buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #5dade2 0%, #3498db 100%);
+  color: white;
+  box-shadow: 0 3px 12px rgba(93, 173, 226, 0.3);
+}
+
+.btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(93, 173, 226, 0.4);
+}
+
+.btn.secondary {
+  background: linear-gradient(135deg, #aeb6bf 0%, #85929e 100%);
+  color: white;
+  box-shadow: 0 3px 12px rgba(174, 182, 191, 0.3);
+}
+
+.btn.secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(174, 182, 191, 0.4);
+}
+
+.btn:disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
