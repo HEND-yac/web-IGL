@@ -1,0 +1,20 @@
+<p>profil works!</p>
+<form>
+  <label>Prénom :</label>
+  <input type="text"
+         [(ngModel)]="utilisateur.nom"
+         name="prenom">
+
+  <br><br>
+
+  <label>Âge :</label>
+  <input type="number"
+         [(ngModel)]="utilisateur.age"
+         name="age">
+</form>
+
+<hr>
+
+<h3>Valeurs saisies :</h3>
+<p>Prénom : {{ utilisateur.nom }}</p>
+<p>Âge : {{ utilisateur.age }}</p>
