@@ -1,0 +1,53 @@
+<div class="game-container">
+  <!-- Affichage du score -->
+  <app-score 
+    [score]="score"
+    [correctAnswers]="correctAnswers"
+    [wrongAnswers]="wrongAnswers"
+    [currentQuestion]="currentQuestionIndex"
+    [totalQuestions]="totalQuestions">
+  </app-score>
+
+  <!-- Jeu en cours -->
+  <div *ngIf="!gameFinished" class="game-content">
+    <app-question 
+      [question]="currentQuestion"
+      (answerSelected)="onAnswerSelected($event)"
+      (timeExpired)="onTimeExpired()">
+    </app-question>
+  </div>
+
+  <!-- Fin de jeu -->
+  <div *ngIf="gameFinished" class="game-over">
+    <div class="results-container">
+      <h1>Jeu terminé !</h1>
+      <div class="performance-message">{{ getPerformanceMessage() }}</div>
+      
+      <div class="final-stats">
+        <div class="stat-card">
+          <h3>Score Final</h3>
+          <div class="final-score">{{ score }}</div>
+        </div>
+        
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number correct">{{ correctAnswers }}</span>
+            <span class="stat-label">Bonnes réponses</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number wrong">{{ wrongAnswers }}</span>
+            <span class="stat-label">Mauvaises réponses</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">{{ ((correctAnswers / totalQuestions) * 100) | number:'1.0-0' }}%</span>
+            <span class="stat-label">Pourcentage de réussite</span>
+          </div>
+        </div>
+      </div>
+      
+      <button class="restart-btn" (click)="restartGame()">
+        Rejouer
+      </button>
+    </div>
+  </div>
+</div>

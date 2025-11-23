@@ -1,0 +1,46 @@
+<div class="question-container">
+  <!-- Chronomètre -->
+  <div class="timer-container">
+    <div class="timer-display" [style.color]="timerColor">
+      <span class="timer-text">{{ timeRemaining }}s</span>
+    </div>
+    <div class="timer-progress">
+      <div class="progress-bar">
+        <div class="progress-fill" [style.width.%]="progressPercentage" [style.background-color]="timerColor"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-content">
+    <h2>{{ question.question }}</h2>
+    
+    <div class="options-container">
+      <button 
+        *ngFor="let option of question.options" 
+        class="option-button"
+        [class.selected]="selectedOption === option"
+        [class.correct]="isCorrectOption(option)"
+        [class.wrong]="isWrongOption(option)"
+        [disabled]="answered"
+        (click)="onSelectOption(option)">
+        {{ option }}
+      </button>
+    </div>
+    
+    <!-- Messages de feedback -->
+    <div *ngIf="answered && selectedOption && timeRemaining > 0" class="feedback-message">
+      <div *ngIf="selectedOption === question.reponse" class="correct-feedback">
+        Excellente réponse ! +10 points
+      </div>
+      <div *ngIf="selectedOption !== question.reponse" class="wrong-feedback">
+        Mauvaise réponse ! -5 points<br>
+        La bonne réponse était : <strong>{{ question.reponse }}</strong>
+      </div>
+    </div>
+    
+    <!-- Message de temps écoulé -->
+    <div *ngIf="answered && timeRemaining <= 0" class="timeout-message">
+      Temps écoulé ! La bonne réponse était : <strong>{{ question.reponse }}</strong>
+    </div>
+  </div>
+</div>

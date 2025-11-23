@@ -1,0 +1,15 @@
+<div class="app-container">
+  <!-- Navigation -->
+  <nav class="navbar" *ngIf="gameStarted">
+    <button class="home-btn" (click)="goHome()">🏠 Accueil</button>
+    <h1>Quiz Game</h1>
+  </nav>
+
+  <!-- Page d'accueil -->
+  <app-home *ngIf="!gameStarted" (startGame)="startGame()"></app-home>
+  
+  <!-- Jeu -->
+  <app-game *ngIf="gameStarted"></app-game>
+</div>
+
+<router-outlet />
